@@ -16,15 +16,18 @@
 
 
 ```php
-if el usuario sube el formulario
-  if el form tiene errores
+if (el usuario sube el formulario)
+  if (el form tiene errores){
     rellena el array de errores
-  else
+  }
+  else{
     graba el data en la bbdd
     302 redirect, si lo pide el HTTP
     exit
-if tenemos errores
+  }
+if(tenemos errores){
   mostrar errores
   rellenar el formulario
+}
 mostrar formulario
 ```
