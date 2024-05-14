@@ -1,4 +1,10 @@
 # Ejercicio biblioteca
+### Comando clave
+Para desplegar la aplicación web comenzamos ejecutando el comando:
+```bash
+php -S 127.0.0.1:8080 formulario.php
+```
+
 ## Tablas:
 
 - Libros (ID, Título, Autor, Año de Publicación)
