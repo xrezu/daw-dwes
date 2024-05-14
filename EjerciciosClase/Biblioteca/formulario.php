@@ -1,14 +1,48 @@
 <?php
-
 $errores = [];
 $titulo = '';
+$autor = '';
+$ano_publicacion = '';
 
-// si el ususario envia el formulario
-if(isset($_POST["enviar"])){
-  // si hay errores en el formulario
-    //rellenar el array de errores 
-  
+// Si el usuario envía el formulario
+if (isset($_POST["enviar"])) {
+    // Validación del campo título
+    $titulo = trim($_POST["titulo"]);
+    if (empty($titulo)) {
+        $errores["titulo"] = "El campo título es obligatorio";
+    } elseif (strlen($titulo) < 3) {
+        $errores["titulo"] = "El título debe tener al menos 3 caracteres";
+    } elseif (strlen($titulo) > 255) {
+        $errores["titulo"] = "El título no puede exceder los 255 caracteres";
+    }
+
+    // Validación del campo autor
+    $autor = trim($_POST["autor"]);
+    if (empty($autor)) {
+        $errores["autor"] = "El campo autor es obligatorio";
+    } elseif (strlen($autor) < 3) {
+        $errores["autor"] = "El autor debe tener al menos 3 caracteres";
+    } elseif (strlen($autor) > 100) {
+        $errores["autor"] = "El autor no puede exceder los 100 caracteres";
+    }
+
+    // Validación del campo año de publicación
+    $ano_publicacion = trim($_POST["ano_publicacion"]);
+    if (empty($ano_publicacion)) {
+        $errores["ano_publicacion"] = "El campo año de publicación es obligatorio";
+    } elseif (!is_numeric($ano_publicacion)) {
+        $errores["ano_publicacion"] = "El año de publicación debe ser un número";
+    } elseif (strlen($ano_publicacion) != 4 || $ano_publicacion < 1000 || $ano_publicacion > date("Y")) {
+        $errores["ano_publicacion"] = "El año de publicación debe ser un número válido de 4 dígitos entre 1000 y el año actual";
+    }
+
+    //en caso de que no haya ningún error lo manda usando el header a exito.php
+    if (count($errores) == 0) {
+        header("Location: exito.php");
+        exit;
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -68,18 +102,35 @@ if(isset($_POST["enviar"])){
       border-radius: 5px;
     }
   </style>
-
-  <body>
-    <div class="container">
-      <form action="" method="post">
-        <?php 
-          if(isset($errores["titulo"])){
-            echo '<span class="error">'.$errores["titulo"].'</span>';
-          }
-        ?>
-          <label for="titulo">Título</label><input type="text" name="titulo" id="titulo" value="<?=$titulo;?>">
-      </form>
-    </div>
-  </body>
 </head>
+<body>
+  <div class="container">
+    <form action="" method="post">
+      <div class="form-group">
+        <label for="titulo">Título</label>
+        <input type="text" name="titulo" id="titulo" value="<?=$titulo;?>">
+        <?php if(isset($errores["titulo"])): ?>
+          <span class="error"><?=$errores["titulo"];?></span>
+        <?php endif; ?>
+      </div>
+      <div class="form-group">
+        <label for="autor">Autor</label>
+        <input type="text" name="autor" id="autor" value="<?=$autor;?>">
+        <?php if(isset($errores["autor"])): ?>
+          <span class="error"><?=$errores["autor"];?></span>
+        <?php endif; ?>
+      </div>
+      <div class="form-group">
+        <label for="ano_publicacion">Año de Publicación</label>
+        <input type="text" name="ano_publicacion" id="ano_publicacion" value="<?=$ano_publicacion;?>">
+        <?php if(isset($errores["ano_publicacion"])): ?>
+          <span class="error"><?=$errores["ano_publicacion"];?></span>
+        <?php endif; ?>
+      </div>
+      <div class="form-group">
+        <button type="submit" name="enviar">Enviar</button>
+      </div>
+    </form>
+  </div>
+</body>
 </html>
