@@ -1,4 +1,7 @@
 <?php
+// Incluir archivo de conexión
+include 'conexion.php';
+
 $errores = [];
 $titulo = '';
 $autor = '';
@@ -36,13 +39,28 @@ if (isset($_POST["enviar"])) {
         $errores["ano_publicacion"] = "El año de publicación debe ser un número válido de 4 dígitos entre 1000 y el año actual";
     }
 
-    //en caso de que no haya ningún error lo manda usando el header a exito.php
+    // Si no hay errores, insertar el libro en la base de datos
     if (count($errores) == 0) {
-        header("Location: exito.php");
-        exit;
+        try {
+            // Consulta SQL para insertar un nuevo libro
+            $sql = "INSERT INTO libros (titulo, autor, ano_publicacion) VALUES (:titulo, :autor, :ano_publicacion)";
+            // Preparar consulta
+            $stmt = $conn->prepare($sql);
+            // Vincular parámetros
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':autor', $autor);
+            $stmt->bindParam(':ano_publicacion', $ano_publicacion);
+            // Ejecutar consulta
+            $stmt->execute();
+
+            // Redirigir a exito.php
+            header("Location: exito.php");
+            exit;
+        } catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 }
-
 ?>
 
 <!DOCTYPE html>

@@ -30,6 +30,7 @@ session_start();
     <p><strong>Autor:</strong> <?php echo $_SESSION['autor']; ?></p>
     <p><strong>Año de Publicación:</strong> <?php echo $_SESSION['ano_publicacion']; ?></p>
     <p><a href="formulario.php">Volver al formulario</a></p>
+    <p><a href="listarlibros.php">Ir al listado de libros</a></p>
   </div>
 </body>
 </html>
