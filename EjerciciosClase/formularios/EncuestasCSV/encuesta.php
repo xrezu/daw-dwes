@@ -1,49 +1,53 @@
 <?php
-  define('FICHERO_PREGUNTAS', 'preguntas.csv');
-  define('FICHERO_RESPUESTAS', 'respuestas.csv');
+define('FICHERO_PREGUNTAS', 'preguntas.csv');
+define('FICHERO_RESPUESTAS', 'respuestas.csv');
 
-  $errores = [];
+$errores = [];
+$preguntas = [];
 
-  $preguntas = [];
-
-  $archivos_preguntas = fopen(FICHERO_PREGUNTAS, 'r');
-  if($archivos_preguntas !== false){
-    while(($linea = fgetcsv($archivo_preguntas)) !== false){
-      $preguntas[] = $linea[0];
+// Abrir el archivo de preguntas
+$archivo_preguntas = fopen(FICHERO_PREGUNTAS, 'r');
+if ($archivo_preguntas !== false) {
+    // Leer cada línea del archivo CSV
+    while (($linea = fgetcsv($archivo_preguntas)) !== false) {
+        // Almacenar cada pregunta en el array $preguntas
+        $preguntas[] = $linea[0];
     }
+    // Cerrar el archivo después de leerlo
     fclose($archivo_preguntas);
-  } else {
+} else {
+    // Registrar un error si el archivo no se puede abrir
     $errores['preguntas'] = "Error al abrir el archivo de preguntas.";
-  }
+}
 
-  if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['enviar'])){
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['enviar'])) {
     $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : null;
-    if(empty($nombre)){
-      $errores['nombre'] = "Por favor, introduzca su nombre";
+    if (empty($nombre)) {
+        $errores['nombre'] = "Por favor, introduzca su nombre";
     }
 
     $respuestas = $_POST['respuestas'] ?? [];
     $pregunta_vacia = false;
 
-    foreach($preguntas as $i => $pregunta){
-      if(!isset($respuestas[$indice]) || $respuestas[$indice] === ""){
-        $pregunta_vacia = true;
-        break;
-      }
+    foreach ($preguntas as $i => $pregunta) {
+        if (!isset($respuestas[$i]) || $respuestas[$i] === "") {
+            $pregunta_vacia = true;
+            break;
+        }
     }
 
-    if($pregunta_vacia){
-      $errores['respuestas'] = "Por favor, responda a todas las preguntas";
+    if ($pregunta_vacia) {
+        $errores['respuestas'] = "Por favor, responda a todas las preguntas";
     }
 
-    if(empty($errores)){
-      $respuestas_csv = strtolower($nombre) . ';' . implode(';', $respuestas) . PHP_EOL;
-      file_put_contents(FICHERO_RESPUESTAS, $respuestas_csv, FILE_APPEND);
+    if (empty($errores)) {
+        $respuestas_csv = strtolower($nombre) . ';' . implode(';', $respuestas) . PHP_EOL;
+        file_put_contents(FICHERO_RESPUESTAS, $respuestas_csv, FILE_APPEND);
 
-      header("Location: exito.php");
-      exit();
+        header("Location: exito.php");
+        exit();
     }
-  }
+}
 ?>
 <!DOCTYPE html>
 <html>
