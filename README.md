@@ -1,27 +1,51 @@
 # DAW & DWES
 Repositorio con apuntes y contenido de las asignaturas de Despliegue de Aplicaciones Web y Desarrollo en Entorno Servidor.
 
-### Puntos a ver en DAW:
-- directivas de apache
-- controles de acceso
-- autentificacion
+## Puntos a ver en DAW:
+### Trimestre 1:
+- git
+- mkdocs y phpdocs
+- directivas Apache
+- WordPress
+- Backups DB
+### Trimestre 2:
+- cron
+- rewrite
 - moodle
-- engines
+- nginx
+- proxy-inverso
 - tomcat
-- docker y docker composer
+- docker
 
-### Puntos a ver en DWES:
-- POO 
+## Puntos a ver en DWES:
+### Trimestre 1:
+- HTML y PHP
+- Funciones
+- POO
+- Bases de datos
+- Ficheros
 - Formularios
-- Recuperación y guardado de información
-- Estado, autentficación y registro
-- Python, Django.
-- Generacion de APIs, GraphQL, Autentificacion
-- SPA
-- App web hibridas
-- 2 proyectos web:
-  - php vanilla, html, css, js...
-  - django y react SPA
+### Trimestre 2:
+- **Autenficacion** (En PHP y en Django):
+  - Cookies
+  - Sesiones
+  - Tokens
+  - Activacion de usuarios
+  - Recuperar contraseña
+  - Oauth
+- **Django**:
+  - Modelo de datos
+  - Trabajar con ORM
+  - Admin site
+  - URLs Vista Génericas
+  - Templates
+  - Paginación
+  - Formularios
+  - Generación de APIs
+
+## 2 proyectos web:
+  - **MINI_TWITTER** (PHP vanilla, HTML, CSS, JS) 
+  - django
 
 
 ## Tech Stack
