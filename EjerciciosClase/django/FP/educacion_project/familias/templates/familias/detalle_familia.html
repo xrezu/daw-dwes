@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ familia.nombre }}</title>
+</head>
+<body>
+    <h1>{{ familia.nombre }}</h1>
+    <p>{{ familia.descripcion }}</p>
+    <h2>Ciclos</h2>
+    <ul>
+        {% for ciclo in familia.ciclos.all %}
+            <li>{{ ciclo.nombre }}: {{ ciclo.descripcion }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'lista_familias' %}">Volver a la lista de familias</a>
+</body>
+</html>

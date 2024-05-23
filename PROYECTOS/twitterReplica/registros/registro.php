@@ -1,14 +1,3 @@
-<?php
-include ('includes/BaseDatos.php');
-
-
-
-
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -44,7 +33,7 @@ include ('includes/BaseDatos.php');
             </div>
             <button type="submit" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Registrarse</button>
         </form>
-        <p class="mt-4 text-sm text-gray-600">¿Ya tienes una cuenta? <a href="iniciar_sesion.php" class="text-purple-500 hover:text-purple-700 font-bold">Inicia sesión aquí</a></p>
+        <p class="mt-4 text-sm text-gray-600">¿Ya tienes una cuenta? <a href="../sesiones/iniciar_sesion.php" class="text-purple-500 hover:text-purple-700 font-bold">Inicia sesión aquí</a></p>
     </div>
 </body>
 </html>

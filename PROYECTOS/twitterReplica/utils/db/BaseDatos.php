@@ -37,7 +37,7 @@ class BaseDatos {
     }
 
     function inicializa(
-        $basedatos,         // Nombre debe ser especificado O el archivo si es SQLite
+        $basedatos = 'mini_twitter',// Nombre debe ser especificado O el archivo si es SQLite         
         $usuario  = 'root', // Ignorado si es SQLite
         $pass     = '1234', // Ignorado si es SQLite
         $motor    = 'mysql',

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Chistes</title>
+</head>
+<body>
+  <h1>Lista de Chistes</h1>
+  <ul>
+    {% for chiste in chistes %}
+      <li>
+        <h2>{{ chiste.titulo }}</h2>
+        <p>{{ chiste.texto }}</p>
+        <p>{{ chiste.fecha_creacion }}</p>
+        <p>{{ chiste.es_para_adultos|yesno:"Para adultos,Para todos" }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
