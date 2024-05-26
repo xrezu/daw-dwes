@@ -34,6 +34,7 @@
             <button type="submit" class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Iniciar Sesión</button>
         </form>
         <p class="mt-4 text-sm text-gray-600">¿No tienes una cuenta? <a href="registro.php" class="text-purple-500 hover:text-purple-700 font-bold">Regístrate aquí</a></p>
+        <p class="mt-4 text-sm text-gray-600">¿Olvidaste tu contraseña? <a href="restablecer_solicitar.php" class="text-purple-500 hover:text-purple-700 font-bold">Restablecer contraseña</a></p>
     </div>
 </body>
 </html>

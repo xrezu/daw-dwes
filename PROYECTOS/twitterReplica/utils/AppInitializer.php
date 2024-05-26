@@ -7,10 +7,10 @@ class AppInitializer {
     
     public static function init() {
         // Cargar el autoloader de Composer
-        require_once __DIR__ . '/../vendor/autoload.php';
+        require_once 'vendor/autoload.php';
         
-        // Iniciar la sesión
-        session_start();
+        // Iniciar la sesión (comentado porque es innecesario ya que en todas las páginas inicio la sesión 
+        // session_start();
         
         // Configurar la conexión a la base de datos
         self::initializeDatabase();
@@ -21,7 +21,7 @@ class AppInitializer {
     
     private static function initializeDatabase() {
         // Incluir la clase BaseDatos
-        require_once __DIR__ . '/db.php';
+        require_once 'db/BaseDatos.php';
         
         // Obtener la instancia única de la base de datos y inicializarla
         $db = BaseDatos::obtenerInstancia();
