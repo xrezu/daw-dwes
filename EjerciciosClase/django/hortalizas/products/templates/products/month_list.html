@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meses del Año</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            display: inline-block;
+            margin: 10px;
+        }
+        a {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            background-color: #007BFF;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Meses del Año</h1>
+    <ul>
+        {% for month in months %}
+            <li>
+                <a href="{% url 'available_products' month %}">{{ month }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

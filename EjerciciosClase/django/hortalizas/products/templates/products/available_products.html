@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Productos Disponibles en {{ month }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 20px 0;
+            text-align: center;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        h2 {
+            margin: 10px 0;
+        }
+        p {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+        .back-link {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .back-link a {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            background-color: #007BFF;
+            border-radius: 5px;
+        }
+        .back-link a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Productos Disponibles en {{ month }}</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <img src="{{ product.photo_url }}" alt="{{ product.name }}">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="back-l
