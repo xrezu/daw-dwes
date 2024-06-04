@@ -5,6 +5,12 @@ use PHPMailer\PHPMailer\Exception;
 
 class AppInitializer {
     
+    private static function initSession() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+    
     public static function init() {
         // Cargar el autoloader de Composer
         require_once 'vendor/autoload.php';
