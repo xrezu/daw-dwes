@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ object.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .character-detail {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .character-detail img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="character-detail">
+        <h1>{{ object.name }}</h1>
+        <img src="{{ object.detail_photo.url }}" alt="{{ object.name }}">
+        <p>{{ object.description }}</p>
+        <a href="{% url 'character-list' %}">Volver al listado</a>
+    </div>
+</body>
+</html>

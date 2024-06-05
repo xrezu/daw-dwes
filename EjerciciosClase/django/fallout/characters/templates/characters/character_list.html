@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personajes de Fallout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .character-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .character-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(33.333% - 20px);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .character-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Personajes</h1>
+    <div class="character-list">
+        {% for character in object_list %}
+            <div class="character-item">
+                <a href="{% url 'character-detail' character.slug %}">
+                    <img src="{{ character.cover_photo.url }}" alt="{{ character.name }}">
+                    <h2>{{ character.name }}</h2>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
