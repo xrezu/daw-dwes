@@ -1,0 +1,13 @@
+<!-- templates/music/upload_song.html -->
+{% extends "base_generic.html" %}
+
+{% block title %}Subir Canción{% endblock %}
+
+{% block content %}
+<h1>Subir Canción</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Subir</button>
+</form>
+{% endblock %}
