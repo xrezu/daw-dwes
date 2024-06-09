@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Memes</title>
+</head>
+<body>
+  <h1>Memes</h1>
+  <ul>
+    {% for meme in memes %}
+    <li>
+      <a href="{% url 'meme_detail' meme.pk %}">
+        <h2>{{ meme.titulo }}</h2>
+        <img src="{{ meme.imagen.url }}" alt="{{ meme.titulo }}" style="max-width: 200px;">
+        <p>{{ meme.descripcion }}</p>
+      </a>
+    </li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'registro' %}">Registrarse</a>
+    <a href="{% url 'login' %}">Iniciar Sesión</a>
+</body>
+</html>

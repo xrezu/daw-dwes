@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ meme.titulo }}</title>
+</head>
+<body>
+    <h1>{{ meme.titulo }}</h1>
+    <img src="{{ meme.imagen.url }}" alt="{{ meme.titulo }}" style="max-width: 600px;">
+    <p>{{ meme.descripcion }}</p>
+
+    <h2>Comentarios</h2>
+    <ul>
+        {% for comentario in comentarios %}
+        <li>
+            <p><strong>{{ comentario.usuario }}:</strong> {{ comentario.comentario }}</p>
+            <p>{{ comentario.fecha }}</p>
+        </li>
+        {% empty %}
+        <li>No hay comentarios aún.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Agregar Comentario</h2>
+    {% if user.is_authenticated %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+    {% else %}
+    <p>Debes <a href="{% url 'login' %}">iniciar sesión</a> para comentar.</p>
+    {% endif %}
+
+    <a href="{% url 'meme_list' %}">Volver a la lista</a>
+</body>
+</html>
