@@ -1,3 +1,8 @@
+<?php
+require 'funciones.php';
+
+$tokens = obtenerTokensValidos();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +16,9 @@
     <div id="contenedor">
     <h1>Recuperar contraseña</h1>
     <ul>
-        <li><a href="recupera.php?token=">Recuperar contraseña</a></li>
-        <li><a href="recupera.php?token=">Recuperar contraseña</a></li>
-        <li><a href="recupera.php?token=">Recuperar contraseña</a></li>
+        <?php foreach($tokens as $indice => $token): ?>
+            <li><a href="recupera.php?token=<?=$token["token"] ?>"> Recupera contraseña <?= $indice + 1?></a></li>
+        <?php endforeach; ?>
     </ul>
     </div>
     

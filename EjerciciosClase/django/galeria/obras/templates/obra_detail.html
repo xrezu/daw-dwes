@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ obra.titulo }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        {% if obra.imagen %}
+            <img src="{{ obra.imagen.url }}" class="img-fluid" alt="{{ obra.titulo }}">
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        <h1>{{ obra.titulo }}</h1>
+        <p><strong>Artista:</strong> {{ obra.artista }}</p>
+        <p><strong>Fecha de creación:</strong> {{ obra.fecha_creacion }}</p>
+        <p><strong>Precio:</strong> ${{ obra.precio }}</p>
+        <p><strong>En venta:</strong> {{ obra.en_venta|yesno:"Sí,No" }}</p>
+        <p>{{ obra.descripcion }}</p>
+    </div>
+</div>
+{% endblock %}

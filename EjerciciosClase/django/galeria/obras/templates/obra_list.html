@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Galería de Obras de Arte{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Galería de Obras de Arte</h1>
+<div class="row">
+    {% for obra in obras %}
+        <div class="col-md-4">
+            <div class="obra-thumbnail">
+                {% if obra.imagen %}
+                    <img src="{{ obra.imagen.url }}" alt="{{ obra.titulo }}">
+                {% endif %}
+                <div class="caption">
+                    <h3>{{ obra.titulo }}</h3>
+                    <p><strong>Artista:</strong> {{ obra.artista }}</p>
+                    <p><a href="{% url 'obra_detail' slug=obra.slug %}" class="btn btn-primary" role="button">Ver detalles</a></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
